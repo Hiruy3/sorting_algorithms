@@ -25,15 +25,12 @@ void node_swap(listint_t *left, listint_t *right)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current = *list, **last = list;
+	listint_t *current = *list, *last = *list;
 	listint_t *temp;
 
 
-	while (last != NULL)
+	while (current)
 	{
-		if (current == NULL)
-			return;
-
 		while (current && current->prev && current->n < current->prev->n)
 		{
 			temp = current->prev->prev;
@@ -45,7 +42,8 @@ void insertion_sort_list(listint_t **list)
 
 			print_list(*list);
 		}
-		current = *last;
-		last = &(*last)->next;
+		current = last;
+		if (last)
+			last = last->next;
 	}
 }
