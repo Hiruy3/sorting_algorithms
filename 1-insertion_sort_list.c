@@ -36,26 +36,12 @@ void insertion_sort_list(listint_t **list)
 
 		while (current && current->prev && current->n < current->prev->n)
 		{
-			/* when swapping at the edge */
-			if (current->prev->prev == NULL)
-			{
-
-				temp = current->prev;
-				temp->next = current->next;
-				current->prev = NULL;
-
-				temp->prev = current;
-				current->next = temp;
-				if (temp->next)
-					temp->next->prev = temp;
-				*list = current;
-				(*list)->next = temp;
-				(*list)->prev = NULL;
-
-				print_list(*list);
-				continue;
-			}
+			temp = current->prev->prev;
 			node_swap(current->prev, current);
+
+			/* when swapping at the edge */
+			if (temp == NULL)
+				*list = current;
 
 			print_list(*list);
 		}
