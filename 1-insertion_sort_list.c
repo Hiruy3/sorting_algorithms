@@ -7,17 +7,7 @@
  */
 void node_swap(listint_t *left, listint_t *right)
 {
-	if (right->next)
-		right->next->prev = left;
-	if (left->prev)
-		left->prev->next = right;
-
 	left->next = right->next;
-	right->prev = left->prev;
-	right->next = left;
-	left->prev = right;
-
-	/*left->next = right->next;
 	right->prev = left->prev;
 
 	left->prev = right;
@@ -28,7 +18,6 @@ void node_swap(listint_t *left, listint_t *right)
 
 	if (right->prev)
 		right->prev->next = right;
-*/
 }
 /**
  * insertion_sort_list - sorts doubly linked list
@@ -48,10 +37,10 @@ void insertion_sort_list(listint_t **list)
 		while (current && current->prev && current->n < current->prev->n)
 		{
 			temp = current->prev->prev;
-			node_swap(current->prev, current);
 
+			node_swap(current->prev, current);
 			/* when swapping at the edge */
-			if (temp == NULL)
+			if (!temp)
 				*list = current;
 
 			print_list(*list);
