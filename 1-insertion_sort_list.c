@@ -26,14 +26,14 @@ void node_swap(listint_t *left, listint_t *right)
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *current = *list, *last = *list;
-	listint_t *temp;
+	listint_t *temp = NULL;
 
 
 	while (current)
 	{
-		while (current && current->prev && current->n < current->prev->n)
+		while (current && current->prev && current->n < (current->prev)->n)
 		{
-			temp = current->prev->prev;
+			temp = (current->prev)->prev;
 
 			node_swap(current->prev, current);
 			/* when swapping at the edge */
