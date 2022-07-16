@@ -28,6 +28,8 @@ void insertion_sort_list(listint_t **list)
 	listint_t *current = *list, **last = list;
 	listint_t *temp;
 
+	if (!list || !*list)
+		return;
 
 	while (last != NULL)
 	{
