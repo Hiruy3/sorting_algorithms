@@ -1,13 +1,13 @@
 #include "sort.h"
 
 /**
- * swap_indcies - swaped 2 values.
+ * swap_val - swaped 2 values.
  * @array: the array for swap him values.
  * @i: First index
  * @j: Second index
  * @n: The size constant for print
  */
-void swap_indices(int *array, int i, int j, const int n)
+void swap_val(int *array, int i, int j, const int n)
 {
 	int tmp;
 	(void) n;
@@ -22,12 +22,11 @@ void swap_indices(int *array, int i, int j, const int n)
 }
 
 /**
- * heapify - Find the largest number between the layers
+ * heapify - maintaining the heap structure
  * @array: The array for sort
  * @size: The menor element
  * @i: The largest.
- * @r_size: The size for print in swap
- * Return: Nothing.
+ * @n: The size for print in swap
  */
 void heapify(int *array, size_t size, int i, const int n)
 {
@@ -43,7 +42,7 @@ void heapify(int *array, size_t size, int i, const int n)
 
 	if (largest != i)
 	{
-		swap_indcies(array, i, largest, n);
+		swap_val(array, i, largest, n);
 		heapify(array, size, largest, n);
 	}
 }
@@ -67,7 +66,7 @@ void heap_sort(int *array, size_t size)
 
 	for (i = size - 1; i >= 0; i--)
 	{
-		swap_indicies(array, 0, i, n);
+		swap_val(array, 0, i, n);
 		heapify(array, i, 0, n);
 	}
 }
